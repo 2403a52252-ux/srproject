@@ -3,81 +3,370 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to SRU</title>
+    <title>SR University - Login</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #4facfe, #6a11cb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4b0082, #7b2cbf, #3a0ca3);
+            padding: 20px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-circle {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4b0082, #7b2cbf);
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
+            font-size: 25px;
+            font-weight: bold;
         }
 
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 60px 80px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        h2 {
+        .logo h1 {
+            color: #4b0082;
             font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            color: #222;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .form-group {
             margin-bottom: 20px;
         }
 
-        p {
-            font-size: 18px;
-            margin-bottom: 30px;
+        .form-group label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: white;
-            color: #4b12a5;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
+        .input-box {
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 48px;
+            padding: 0 15px;
+            border: 1px solid #d5d5d5;
+            border-radius: 9px;
+            outline: none;
+            font-size: 15px;
             transition: 0.3s;
         }
 
-        .btn:hover {
-            background: #4b12a5;
+        .input-box input:focus {
+            border-color: #6a0dad;
+            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.1);
+        }
+
+        .password-input {
+            padding-right: 70px !important;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #6a0dad;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .remember input {
+            accent-color: #6a0dad;
+            cursor: pointer;
+        }
+
+        .forgot {
+            color: #6a0dad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #4b0082, #7b2cbf);
             color: white;
-            transform: scale(1.05);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(75, 0, 130, 0.3);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            background: #ddd;
+            flex: 1;
+        }
+
+        .signup {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signup a {
+            color: #6a0dad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .home-link:hover {
+            color: #6a0dad;
+        }
+
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 30px 25px;
+            }
+
+            .logo h1 {
+                font-size: 26px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Welcome to SRU</h1>
-        <h2>SR University</h2>
+    <div class="login-box">
 
-        <p>
-            Welcome to SR University – A place where
-            knowledge, innovation and excellence come together.
-        </p>
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-circle">SRU</div>
+            <h1>SR University</h1>
+            <p>Student Portal</p>
+        </div>
 
-        <a href="#" class="btn">Explore SRU</a>
+        <!-- Welcome -->
+        <div class="welcome">
+            <h2>Welcome Back!</h2>
+            <p>Login to access your student account</p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username / Email</label>
+
+                <div class="input-box">
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username or email"
+                        required
+                    >
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <div class="input-box">
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="password-input"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        onclick="togglePassword()"
+                    >
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="options">
+
+                <label class="remember">
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+
+                <a href="#" class="forgot">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <div class="divider">
+            OR
+        </div>
+
+        <!-- Sign Up -->
+        <div class="signup">
+            Don't have an account?
+            <a href="#">Create Account</a>
+        </div>
+
+        <!-- Home -->
+        <a href="index.html" class="home-link">
+            ← Back to Home
+        </a>
+
     </div>
+
+
+    <script>
+
+        // Show / Hide Password
+        function togglePassword() {
+
+            const password = document.getElementById("password");
+            const button = document.querySelector(".show-password");
+
+            if (password.type === "password") {
+                password.type = "text";
+                button.textContent = "Hide";
+            } else {
+                password.type = "password";
+                button.textContent = "Show";
+            }
+        }
+
+
+        // Login Form
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("Please enter your username and password.");
+                return;
+            }
+
+            alert("Login form submitted successfully!");
+
+        });
+
+    </script>
 
 </body>
 </html>
